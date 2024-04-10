@@ -10,10 +10,12 @@ Simulare un countdown di 10 secondi che alla fine dice "Buon anno!"
 
 ## LOGIC
 4. utilizzo setInterval con cadenza di 1000 millisecondi
+5. assegno setInterval ad una variabile
     -  ad ogni intervallo decremento la variabile
     - controllo se è uguale a "0"
 
 ## OUTPUT 
+        - blocco il set Interval
         - nascondo l'elemento html con id secondi
         - stampo a video "Buon Anno"
 
