@@ -1,23 +1,43 @@
 // INPUT
 // declaration variable
-let secondi = 0
-let minuti = 0
-const startBtn = document.getElementById("start");
-const stopBtn = document.getElementById("stop");
-console.log(startBtn,stopBtn);
-
+let seconds = 0;                                                                // seconds variable
+let minutes = 0;                                                                // minutes variable
+const startBtn = document.getElementById("start");                              // button start
+const stopBtn = document.getElementById("stop");                                //button reset
+const displayM = document.getElementById("minutes");                            // minutes display
+const displayS = document.getElementById("seconds");                            // seconds display
+const message = document.getElementById("message");                             // max time arrived
+let controll = 1;                                                               // controll start or pause
+let contRecords = 1;                                                            // records counter
 // LOGIC
-
-
-startBtn.addEventListener("click", function(){      // add event on click start button
-    startBtn.classList.add("disabled");             // add class disabled start button 
-    stopBtn.classList.remove("disabled");           // remove class disable stop button
-    const stop = setInterval(function(){            // assign set interval to variable and start setInterval
-        console.log("ciao");                        
-    },1000);                                        // 1 second inteval
-    stopBtn.addEventListener("click", function(){   // add event on click stop button
-        clearInterval(stop);                        // stop set interval
-        startBtn.classList.remove("disabled");      // remove start button class disabled
-        stopBtn.classList.add("disabled");          // add stop button class disabled
-    });
+startBtn.addEventListener("click", function () {                                // start button event click
+    stopBtn.classList.remove("disabled");                                       // remove class disable at reset btn
+    message.innerHTML = "";                                                     // reset message max time arrived
+    controll++;                                                                 // increment controll start button
+    seconds++;                                                          // increment seconds
+    const stop = setInterval(function () {                                      // start set interval and save to variable
+        if (controll % 2 === 0) {                                               // run the code or not
+            startBtn.innerText = "pause";                                       // trasform text of btn star in "pause"
+            if (seconds == 3) {                                                 // controll max seconds
+                seconds = 0;                                                    // reset value second
+                minutes++;                                                      // increment minutes
+            } else if (minutes == 1) {                                          // controll max minutes
+                seconds = 0;                                                    // reset seconds variable
+                message.innerHTML = "hai superato il tempo limite di 1 ora";    // show on page message
+                saveBestTime();                                                 // message max time arrived
+                clearInterval(stop);                                            // stop setInterval
+                reset();                                                        // reset display and variable with function
+            }
+            PrintToHtml(minutes, seconds);                                       //function show result HTML
+        } else {
+            startBtn.innerText = "start ";                                      // trasform text of btn start in "start"
+            clearInterval(stop);                                                //stop setInterval
+        }
+    }, 1000);                                                                   // set interval 1 second
+});
+stopBtn.addEventListener("click", function () {                                 // reset button Event Click
+    stopBtn.classList.add("disabled");                                          // add class disablet to reset btn            
+    saveBestTime();                                                             // save best time with function
+    clearInterval(stop);                                                        // stop setInterval
+    reset();                                                                    // reset display and variable with function
 });

@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRONOMETRO</title>
-    <!-- style -->
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div id="display">
-        <button id="start">start</button>
-        <button id="stop" class="disabled">stop</button>
-        <span id="minuti">00</spa><span> : </span>
-        <span id="secondi">00</span>
-    </div>
-    <!-- script -->
-    <script src="./js/function.js"></script>
-    <script src="./js/script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRONOMETRO</title>
+        <!-- style -->
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <!--  container best time -->
+        <ul id=records>
+            <li>RECORDS<li>
+        </ul>
+        <!-- /container best time -->
+
+        <!-- container button and time -->
+        <div id="display">
+            <button id="start">start</button>
+            <button id="stop" class="disabled">reset</button>
+            <span id="minutes">00</span>
+            <span> : </span>
+            <span id="seconds">00</span>
+            <span id="message"></span>
+        </div>
+        <!-- /container button and time -->
+
+        <!-- script -->
+        <script src="./js/function.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
 </html>
