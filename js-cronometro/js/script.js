@@ -14,20 +14,21 @@ startBtn.addEventListener("click", function () {                                
     stopBtn.classList.remove("disabled");                                       // remove class disable at reset btn
     message.innerHTML = "";                                                     // reset message max time arrived
     controll++;                                                                 // increment controll start button
-    seconds++;                                                          // increment seconds
     const stop = setInterval(function () {                                      // start set interval and save to variable
+        seconds++;                                                          // increment seconds
         if (controll % 2 === 0) {                                               // run the code or not
             startBtn.innerText = "pause";                                       // trasform text of btn star in "pause"
-            if (seconds == 3) {                                                 // controll max seconds
+            if (seconds == 60) {                                                 // controll max seconds
                 seconds = 0;                                                    // reset value second
                 minutes++;                                                      // increment minutes
-            } else if (minutes == 1) {                                          // controll max minutes
+            } else if (minutes == 60) {                                          // controll max minutes
                 seconds = 0;                                                    // reset seconds variable
                 message.innerHTML = "hai superato il tempo limite di 1 ora";    // show on page message
                 saveBestTime();                                                 // message max time arrived
                 clearInterval(stop);                                            // stop setInterval
                 reset();                                                        // reset display and variable with function
             }
+            console.log(seconds);
             PrintToHtml(minutes, seconds);                                       //function show result HTML
         } else {
             startBtn.innerText = "start ";                                      // trasform text of btn start in "start"
