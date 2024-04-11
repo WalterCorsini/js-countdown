@@ -15,9 +15,9 @@ startBtn.addEventListener("click", function () {                                
     message.innerHTML = "";                                                     // reset message max time arrived
     controll++;                                                                 // increment controll start button
     const stop = setInterval(function () {                                      // start set interval and save to variable
-        seconds++;                                                          // increment seconds
         if (controll % 2 === 0) {                                               // run the code or not
             startBtn.innerText = "pause";                                       // trasform text of btn star in "pause"
+            seconds++;                                                          // increment seconds
             if (seconds == 60) {                                                 // controll max seconds
                 seconds = 0;                                                    // reset value second
                 minutes++;                                                      // increment minutes

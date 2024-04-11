@@ -47,8 +47,7 @@ function saveBestTime() {
         alert("fai partire prima il tempo");
     } else {
         liElem = document.createElement("li");
-        liElem.innerHTML =
-            contRecords + ") " + minutes + " minuti : " + seconds + " secondi";
+        liElem.innerHTML = contRecords + ") " + minutes + " minuti : " + seconds + " secondi";
         document.getElementById("records").append(liElem);
         contRecords++;
     }
