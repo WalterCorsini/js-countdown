@@ -7,15 +7,19 @@ const stopBtn = document.getElementById("stop");                                
 const displayM = document.getElementById("minutes");                            // minutes display
 const displayS = document.getElementById("seconds");                            // seconds display
 const message = document.getElementById("message");                             // max time arrived
-let controll = 1;                                                               // controll start or pause
+let controll = false;                                                               // controll start or pause
 let contRecords = 1;                                                            // records counter
 // LOGIC
 startBtn.addEventListener("click", function () {                                // start button event click
     stopBtn.classList.remove("disabled");                                       // remove class disable at reset btn
     message.innerHTML = "";                                                     // reset message max time arrived
-    controll++;                                                                 // increment controll start button
+    if(controll === true){
+        controll = false;
+    } else {
+        controll = true;
+    }                                             // increment controll start button
     const stop = setInterval(function () {                                      // start set interval and save to variable
-        if (controll % 2 === 0) {                                               // run the code or not
+        if (controll === true) {                                               // run the code or not
             startBtn.innerText = "pause";                                       // trasform text of btn star in "pause"
             seconds++;                                                          // increment seconds
             if (seconds == 60) {                                                 // controll max seconds
@@ -31,6 +35,7 @@ startBtn.addEventListener("click", function () {                                
             console.log(seconds);
             PrintToHtml(minutes, seconds);                                       //function show result HTML
         } else {
+            //  inposto set timeout 1 secondo per resettarlo
             startBtn.innerText = "start ";                                      // trasform text of btn start in "start"
             clearInterval(stop);                                                //stop setInterval
         }
