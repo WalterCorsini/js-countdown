@@ -7,18 +7,28 @@ const stopBtn = document.getElementById("stop");                                
 const displayM = document.getElementById("minutes");                            // minutes display
 const displayS = document.getElementById("seconds");                            // seconds display
 const message = document.getElementById("message");                             // max time arrived
-let controll = false;                                                               // controll start or pause
+let controll = false;                                                           // controll start or pause
 let contRecords = 1;                                                            // records counter
 // LOGIC
-startBtn.addEventListener("click", function () {                                // start button event click
-    stopBtn.classList.remove("disabled");                                       // remove class disable at reset btn
+startBtn.addEventListener("click", function () {   
+    startBtn.classList.add("disabled");                                         // start button event click
     message.innerHTML = "";                                                     // reset message max time arrived
     if(controll === true){
         controll = false;
+        setTimeout(function(){
+            // per provare a disabilitare e riattivare start
+                startBtn.classList.remove("disabled");
+        },1000);  
     } else {
         controll = true;
-    }                                             // increment controll start button
-    const stop = setInterval(function () {                                      // start set interval and save to variable
+        setTimeout(function(){
+            // per provare a disabilitare e riattivare start
+            startBtn.classList.remove("disabled");
+        },1000); 
+        stopBtn.classList.remove("disabled");                                   // remove class disable at reset btn
+    }                                                                           // increment controll start button
+    const stop = setInterval(function () {
+        startBtn.classList.add("disabled");
         if (controll === true) {                                               // run the code or not
             startBtn.innerText = "pause";                                       // trasform text of btn star in "pause"
             seconds++;                                                          // increment seconds
@@ -39,6 +49,7 @@ startBtn.addEventListener("click", function () {                                
             startBtn.innerText = "start ";                                      // trasform text of btn start in "start"
             clearInterval(stop);                                                //stop setInterval
         }
+        startBtn.classList.remove("disabled");
     }, 1000);                                                                   // set interval 1 second
 });
 stopBtn.addEventListener("click", function () {                                 // reset button Event Click
